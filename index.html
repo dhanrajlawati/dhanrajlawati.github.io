@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Academic portfolio of Dhan Raj Lawati — Ph.D. student in Materials Engineering, quantum sensing, NV magnetometry, and quantum materials." />
+  <title>Dhan Raj Lawati | Quantum Sensing & Materials Engineering</title>
+
+  <!-- Favicon: yellow D on black -->
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050505'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Arial' font-size='42' font-weight='700' fill='%23ffe600'%3ED%3C/text%3E%3C/svg%3E"
+  />
+
+  <style>
+    :root {
+      --black: #090909;
+      --ink: #151515;
+      --green: #16803c;
+      --green-dark: #0c5d2b;
+      --magenta: #c21875;
+      --yellow: #ffe600;
+      --white: #ffffff;
+      --paper: #f7f7f4;
+      --line: #deded8;
+      --muted: #666666;
+      --shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    .d-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      background: var(--black);
+      color: var(--yellow);
+      display: inline-grid;
+      place-items: center;
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1;
+      box-shadow: 4px 4px 0 var(--green);
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      padding: 8px 11px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      background: #eef6f0;
+      color: var(--green-dark);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 90px 0 82px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(194,24,117,.11), transparent 28%),
+        radial-gradient(circle at 12% 70%, rgba(22,128,60,.10), transparent 32%),
+        var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--magenta);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: .98;
+      letter-spacing: -.055em;
+      margin: 0 0 20px;
+    }
+
+    h1 span { color: var(--green); }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 18px;
+      color: #444;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 2px solid var(--black);
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-weight: 800;
+      font-size: 14px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 4px 4px 0 var(--magenta);
+    }
+
+    .btn.primary {
+      background: var(--black);
+      color: var(--yellow);
+    }
+
+    .btn.secondary {
+      background: var(--white);
+    }
+
+    .hero-card {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 12px 12px 0 var(--magenta);
+    }
+
+    .hero-card .mini-d {
+      margin-bottom: 22px;
+    }
+
+    .hero-card h2 {
+      font-size: 25px;
+      margin: 0 0 8px;
+    }
+
+    .hero-card p {
+      color: #d6d6d6;
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      border: 1px solid #3a3a3a;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--yellow);
+      font-size: 22px;
+    }
+
+    .stat span {
+      font-size: 11px;
+      color: #bdbdbd;
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: 82px 0; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      color: var(--green);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      margin-bottom: 6px;
+    }
+
+    h2.section-title {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .section-intro {
+      max-width: 610px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .highlight {
+      border-left: 5px solid var(--magenta);
+      padding-left: 16px;
+      margin: 22px 0 0;
+    }
+
+    /* ---------- Research cards ---------- */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .research-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .research-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      right: -25px;
+      top: -25px;
+      background: rgba(22,128,60,.09);
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f8e6f0;
+      color: var(--magenta);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 13px;
+    }
+
+    .research-card h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .research-card p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* ---------- Timeline ---------- */
+    .timeline {
+      border-left: 3px solid var(--green);
+      margin-left: 12px;
+      padding-left: 27px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -38px;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--yellow);
+      border: 3px solid var(--black);
+    }
+
+    .date {
+      color: var(--magenta);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .timeline-item h3 { margin: 5px 0 2px; font-size: 21px; }
+    .institution { color: var(--green-dark); font-weight: 800; margin-bottom: 9px; }
+
+    .project {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 17px 19px;
+      margin-top: 12px;
+    }
+
+    .project strong { display: block; margin-bottom: 5px; }
+
+    /* ---------- Skills ---------- */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .skill-box {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 15px;
+      padding: 22px;
+    }
+
+    .skill-box h3 {
+      color: var(--yellow);
+      font-size: 16px;
+      margin-top: 0;
+    }
+
+    .skill-box p {
+      color: #d7d7d7;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* ---------- Publications ---------- */
+    .publication {
+      display: grid;
+      grid-template-columns: 55px 1fr auto;
+      gap: 18px;
+      align-items: start;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pub-num {
+      color: var(--magenta);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .publication h3 {
+      font-size: 16px;
+      margin: 0 0 6px;
+      line-height: 1.45;
+    }
+
+    .publication p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .doi {
+      border: 1px solid var(--green);
+      color: var(--green-dark);
+      border-radius: 8px;
+      padding: 7px 9px;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    /* ---------- Achievements / presentations ---------- */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .clean-list {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .clean-list li { margin-bottom: 12px; }
+
+    /* ---------- Contact ---------- */
+    .contact {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: "D";
+      position: absolute;
+      right: 25px;
+      bottom: -45px;
+      font-size: 220px;
+      line-height: 1;
+      color: rgba(255,230,0,.08);
+      font-weight: 900;
+    }
+
+    .contact h2 { margin-top: 0; font-size: 40px; }
+    .contact p { color: #d2d2d2; max-width: 700px; }
+
+    .contact-links {
+      display: flex;
+      gap: 11px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-link {
+      border: 1px solid #454545;
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .contact-link:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 28px 0 40px;
+      color: #777;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .two-col { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: repeat(2, 1fr); }
+      .research-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 60px; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(calc(100% - 26px), var(--max)); }
+      .nav-inner { align-items: flex-start; padding: 12px 0; flex-direction: column; }
+      .nav-links { width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+      section { padding: 60px 0; }
+      .skills { grid-template-columns: 1fr; }
+      .publication { grid-template-columns: 38px 1fr; }
+      .publication .doi { grid-column: 2; justify-self: start; }
+      .contact { padding: 30px 22px; }
+      .contact h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Dhan Raj Lawati home">
+        <span class="d-icon" aria-hidden="true">D</span>
+        <span>Dhan Raj Lawati</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Materials Engineering • Quantum Sensing • Quantum Materials</div>
+          <h1>Dhan Raj <span>Lawati</span></h1>
+          <p>
+            Ph.D. student in Materials Engineering at the University of Nebraska–Lincoln,
+            working at the intersection of quantum sensing, magnetic materials, NV-diamond
+            microscopy, and device engineering.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#research">⌁ Explore Research</a>
+            <a class="btn secondary" href="#publications">↗ Publications</a>
+            <a class="btn secondary" href="mailto:dlawati2@huskers.unl.edu">✉ Email</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="mini-d d-icon" aria-hidden="true">D</div>
+          <h2>Quantum sensing for magnetic materials</h2>
+          <p>
+            Developing and integrating scanning NV microscopy and cryogenic sensing
+            platforms for nanoscale magnetic characterization.
+          </p>
+
+          <div class="stats">
+            <div class="stat"><strong>40 nm</strong><span>spatial resolution</span></div>
+            <div class="stat"><strong>~5 µT/√Hz</strong><span>reported sensitivity</span></div>
+            <div class="stat"><strong>2–300 K</strong><span>cryogenic platform</span></div>
+            <div class="stat"><strong>3.90/4.00</strong><span>Ph.D. CGPA</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">01 / About</div>
+            <h2 class="section-title">Materials engineering meets quantum sensing.</h2>
+          </div>
+          <p class="section-intro">
+            Detail-oriented researcher with hands-on experience spanning materials
+            development, magnetic characterization, quantum sensing, fabrication, and
+            computational materials science.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="panel">
+            <h3>Research profile</h3>
+            <p>
+              Dhan's work focuses on solid-state spin qubits, nitrogen-vacancy (NV)
+              center-based magnetometry, quantum sensing platforms, and materials/device
+              integration. Current work includes scanning NV microscopy, cryogenic NV
+              sensing, magnetic materials, and spin dynamics.
+            </p>
+            <p class="highlight">
+              Goal: bridge quantum materials engineering and scalable quantum-device
+              development through state-of-the-art sensing and characterization.
+            </p>
+          </article>
+
+          <article class="panel">
+            <h3>Education</h3>
+            <p><strong>Ph.D. in Materials Engineering</strong><br />
+              University of Nebraska–Lincoln · 08/2024–Present<br />
+              CGPA: 3.90/4.00 · Advisor: Prof. Abdelghani Laraoui
+            </p>
+            <p><strong>Master's in Physics</strong><br />
+              Tribhuvan University, Kirtipur, Nepal · 12/2018–12/2022<br />
+              CGPA: 3.87/4.00 · Advisor: Prof. Rajendra Parajuli
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">02 / Research</div>
+            <h2 class="section-title">Current research directions</h2>
+          </div>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card">
+            <span class="tag">NV quantum sensing</span>
+            <h3>High-sensitivity piezomagnetic imaging</h3>
+            <p>
+              Thin-film fabrication and characterization combined with a custom
+              single-NV scanning microscopy platform, microwave excitation, electromagnet
+              bias fields, and automated CW-ODMR imaging.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">Cryogenic magnetism</span>
+            <h3>2D magnets & single-spin sensing</h3>
+            <p>
+              Cryogenic NV measurements from 2–300 K using microwave delivery structures
+              and DC/AC sensing protocols including ODMR, Rabi, Ramsey, T1, T2, XY8,
+              and CPMG.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">Magnetic materials</span>
+            <h3>Magnetic domains & spin dynamics</h3>
+            <p>
+              Nanoscale stray-field mapping, quantitative magnetic-domain analysis,
+              coherence measurements, and magnetic-noise spectroscopy for quantum
+              materials.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">First-principles</span>
+            <h3>Quantum materials & optoelectronics</h3>
+            <p>
+              DFT workflows for structural relaxation, electronic properties, optical
+              spectra, band structures, density of states, dielectric response, and
+              absorption in quantum materials.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">Green energy</span>
+            <h3>Bio-waste-derived supercapacitor electrodes</h3>
+            <p>
+              Sustainable activated-carbon nanomaterials and binder-free electrodes
+              characterized using cyclic voltammetry and galvanostatic charge–discharge.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <span class="tag">Experimental platform</span>
+            <h3>Integrated quantum sensing systems</h3>
+            <p>
+              System integration across scanning probes, microwave engineering,
+              cryogenics, LabVIEW automation, Python analysis, and magnetic-field control.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">03 / Experience</div>
+            <h2 class="section-title">Research & professional experience</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="date">01/2025 – Present</div>
+            <h3>Graduate Research Assistant</h3>
+            <div class="institution">Quantum Sensing & Defect Discovery and Spectroscopy Lab</div>
+
+            <div class="project">
+              <strong>Project 1 — High-sensitivity piezomagnetic imaging with NV quantum sensing</strong>
+              Fabricated and characterized thin films using AFM, XRD, SEM, and SQUID;
+              integrated a custom NV scanning microscopy system; performed temperature,
+              field-cooled, and strain-dependent studies; automated CW-ODMR workflows;
+              and developed Python pipelines for magnetic imaging and domain analysis.
+            </div>
+
+            <div class="project">
+              <strong>Project 2 — Cryogenic magnetic sensing of 2D magnets</strong>
+              Designed microwave delivery loops using e-beam lithography, implemented
+              a closed-cycle 2–300 K cryogenic system, and executed DC and AC spin-sensing
+              protocols to quantify nanoscale stray fields, coherence times, and magnetic
+              noise spectra.
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="date">01/2021 – 01/2024</div>
+            <h3>Master Research Assistant</h3>
+            <div class="institution">Atmospheric and Material Science Research Center</div>
+
+            <div class="project">
+              <strong>Project 1 — Bio-waste-derived supercapacitor electrodes</strong>
+              Synthesized biomass-derived activated carbon nanomaterials and fabricated
+              binder-free electrodes for electrochemical characterization.
+            </div>
+
+            <div class="project">
+              <strong>Project 2 — Quantum materials using first-principles methods</strong>
+              Designed DFT workflows with structural relaxation, k-point sampling,
+              convergence testing, and electronic/optical property calculations.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">04 / Skills</div>
+            <h2 class="section-title">Tools & capabilities</h2>
+          </div>
+        </div>
+
+        <div class="skills">
+          <article class="skill-box">
+            <h3>NV & Quantum Photonics</h3>
+            <p>Scanning NV microscopy · Wide-field NV microscopy · Cryogenic NV microscopy · Nonlinear optics · Microwave engineering</p>
+          </article>
+          <article class="skill-box">
+            <h3>Fabrication & Characterization</h3>
+            <p>Thin-film deposition · E-beam lithography · Etching · SQUID · AFM · MFM · SEM · TEM · XRD · Raman</p>
+          </article>
+          <article class="skill-box">
+            <h3>Computation & Data</h3>
+            <p>Python · MATLAB · Mathematica · LaTeX · LabVIEW · Origin · Gwyddion · VESTA · VASP · Statistical modeling</p>
+          </article>
+          <article class="skill-box">
+            <h3>Research Practice</h3>
+            <p>Experimental troubleshooting · DOE-guided optimization · Quantitative interpretation · Scientific communication · Multidisciplinary collaboration</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">05 / Publications</div>
+            <h2 class="section-title">Selected publications</h2>
+          </div>
+          <p class="section-intro">Peer-reviewed and submitted work listed in the supplied résumé.</p>
+        </div>
+
+        <div id="publication-list">
+          <article class="publication">
+            <div class="pub-num">01</div>
+            <div>
+              <h3>D. R. Lawati, P. B. Karki, J. Kumar, et al., “Spin Dynamics in the van der Waals Ferromagnet CrTe2 Engineered by Nb Doping.”</h3>
+              <p>arXiv:2512.22058v1 · Submitted — publication in process.</p>
+            </div>
+            <a class="doi" href="https://doi.org/10.48550/arXiv.2512.22058" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="publication">
+            <div class="pub-num">02</div>
+            <div>
+              <h3>J. Khan, D. R. Lawati, A. Dutta, F. N. Almutairi, and A. Ayari-Akkari, “Insight to structural, mechanical, electronic and optical properties of YSbPd and YSbPt half heusles: An ab-initio investigation.”</h3>
+              <p>Optical and Quantum Electronics, vol. 57, no. 2, 2025.</p>
+            </div>
+            <a class="doi" href="https://doi.org/10.1007/s11082-024-08020-z" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="publication">
+            <div class="pub-num">03</div>
+            <div>
+              <h3>D. R. Lawati, J. Khan, A. Dutta, B. Akila, N. Algethami, and M. Al-Buriahi, “Investigating structural and electronic features, band gap modulation, and optical absorption in ASnCl3 (A = Na, K) perovskites for optoelectronic applications.”</h3>
+              <p>Solid State Communications, vol. 398, p. 115850, 2025.</p>
+            </div>
+            <a class="doi" href="https://doi.org/10.1016/j.ssc.2025.115850" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="publication">
+            <div class="pub-num">04</div>
+            <div>
+              <h3>D. Behera, D. R. Lawati, M. Agouri, et al., “A DFT insight into the physical features of alkaline based perovskite compounds AInBr3 (A = K, Rb).”</h3>
+              <p>Solid State Ionics, vol. 409, p. 116513, 2024.</p>
+            </div>
+            <a class="doi" href="https://doi.org/10.1016/j.ssi.2024.116513" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="publication">
+            <div class="pub-num">05</div>
+            <div>
+              <h3>D. R. Lawati, P. Shrestha, S. Sharma, L. P. Joshi, and R. Parajuli, “A DFT study of the physical properties of novel vanadium-based half-heusler alloys VYAl (Y = Ni, Pd, and Pt) pertinent to their optoelectronics application.”</h3>
+              <p>Physica Scripta, vol. 99, p. 075997, 2024.</p>
+            </div>
+            <a class="doi" href="https://doi.org/10.1088/1402-4896/ad591c" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="publication">
+            <div class="pub-num">06</div>
+            <div>
+              <h3>D. R. Lawati, H. K. Neupane, D. K. Chaudhary, et al., “Structural, mechanical, electronic and optical properties of MgZnO3 perovskite: First-principles study.”</h3>
+              <p>Journal of Physics and Chemistry of Solids, vol. 181, p. 111547, 2023.</p>
+            </div>
+            <a class="doi" href="https://doi.org/10.1016/j.jpcs.2023.111547" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="container">
+        <div class="two-col">
+          <article class="panel">
+            <div class="section-kicker">06 / Achievements</div>
+            <h2 class="section-title">Recognition & mentorship</h2>
+            <ul class="clean-list">
+              <li>Best Presentation Award, ICLEASM-2023.</li>
+              <li>Master Thesis Support Grant, University Grants Commission, Nepal — Award no. MRS-77/78-S&T-121.</li>
+              <li>Full merit-based scholarship for master's study by Tribhuvan University.</li>
+              <li>Graduate Mentor since 08/2025; mentored two undergraduate researchers, resulting in two student-led symposium presentations and 100% STEM-pathway retention.</li>
+              <li>Graduate judge for undergraduate STEM poster presenters in university research days in Spring 2025 and 2026.</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <div class="section-kicker">07 / Presentations</div>
+            <h2 class="section-title">Scientific presentations</h2>
+            <ul class="clean-list">
+              <li><strong>APS Global Physics Summit 2026</strong> — Study the effect of film thickness and substrate on antiferromagnetic domains in epitaxial Cr2O3 films using nitrogen-vacancy scanning probe microscopy. Oral presentation, Denver, CO.</li>
+              <li><strong>APS Global Physics Summit 2026</strong> — Tuning the magnetic properties of Cr1-xNbxTe2 (x = 0–0.2) crystals by Nb doping. Oral presentation, Denver, CO.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <div class="section-kicker">08 / Contact</div>
+          <h2>Let's connect.</h2>
+          <p>
+            For research collaboration, scientific discussion, quantum sensing,
+            materials characterization, or academic opportunities, reach out directly.
+          </p>
+
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:dlawati2@huskers.unl.edu">✉ dlawati2@huskers.unl.edu</a>
+            <a class="contact-link" href="mailto:rajlawati0@gmail.com">✉ rajlawati0@gmail.com</a>
+            <a class="contact-link" href="tel:+14028536728">☎ (402) 853-6728</a>
+            <a class="contact-link" href="https://www.linkedin.com/" target="_blank" rel="noopener">in LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span class="d-icon" style="width:28px;height:28px;border-radius:7px;font-size:18px;box-shadow:none;display:inline-grid;vertical-align:middle;margin-right:7px;">D</span>
+      © <span id="year"></span> Dhan Raj Lawati · Academic Portfolio
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
