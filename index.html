@@ -538,20 +538,21 @@
       .contact h2 { font-size: 32px; }
     }
 
-    /* Profile picture */
-      .profile-frame {
-        width: 24px;
-        height: 24px;
-        overflow: hidden;
-        border-radius: 2px;
+    /* Profile picture — sized to replace the original stats area */
+    .profile-stat-image {
+      width: 100%;
+      height: 190px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid #3a3a3a;
     }
 
-      .profile-frame img {
-        width: 24px;
-        height: 24px;
-        object-fit: cover;
-        object-position: center 24px;
-        display: block;
+    .profile-stat-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 24%;
+      display: block;
     }
   </style>
 </head>
@@ -596,7 +597,6 @@
         </div>
 
         <aside class="hero-card">
-          <div class="mini-d d-icon" aria-hidden="true">D</div>
           <h2>Quantum sensing for magnetic materials</h2>
           <p>
             Developing and integrating scanning NV microscopy and cryogenic sensing
